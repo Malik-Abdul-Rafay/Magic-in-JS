@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press Key Magic</title>
+    <style>
+        .rotate {
+    transform: rotate(360deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+.scale {
+    transform: scale(1.5);
+    transition: transform 0.5s ease-in-out;
+}
+
+.skew {
+    transform: skew(30deg);
+    transition: transform 0.5s ease-in-out;
+}
+
+.fadeInOut {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.bounce {
+    animation: bounce 0.5s ease-in-out;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-20px);
+    }
+    60% {
+        transform: translateY(-10px);
+    }
+}
+
+    </style>
+    <style>
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>Press any key to watch the magic!</h1>
+
+    <script>
+        document.addEventListener('keydown', handleKeyPress);
+
+function handleKeyPress(event) {
+    // Get a random magic effect
+    const magicEffect = getRandomMagicEffect();
+
+    // Apply the magic effect
+    applyMagicEffect(magicEffect);
+}
+
+function getRandomMagicEffect() {
+    // Define an array of magic effects
+    const magicEffects = [
+        'rotate', 'scale', 'skew', 'fadeInOut', 'bounce'
+    ];
+
+    // Get a random magic effect from the array
+    const randomIndex = Math.floor(Math.random() * magicEffects.length);
+    return magicEffects[randomIndex];
+}
+
+function applyMagicEffect(effect) {
+    const magicElement = document.querySelector('h1');
+
+    // Remove existing magic classes
+    magicElement.classList.remove(...magicElement.classList);
+
+    // Apply the selected magic effect class
+    magicElement.classList.add(effect);
+}
+
+    </script>
+</body>
+</html>
